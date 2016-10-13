@@ -4,11 +4,14 @@ import { Link } from 'dva/router';
 import styles from './IndexPage.less';
 import PostList from '../components/PostList'
 
-function BlogPage() {
+function BlogPage({ location, dispatch, blog }) {
   return (
     <div className={styles.normal}>
       <h1>Blog</h1>
-      <PostList />
+      {
+        blog.loading ? <p>loading...</p> : ''
+      }
+      <PostList posts={blog.posts} />
     </div>
   );
 }
@@ -16,4 +19,8 @@ function BlogPage() {
 BlogPage.propTypes = {
 };
 
-export default connect()(BlogPage);
+function mapStateToProps({ blog }) {
+  return { blog };
+}
+
+export default connect(mapStateToProps)(BlogPage);
