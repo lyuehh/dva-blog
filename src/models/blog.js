@@ -24,7 +24,7 @@ export default {
   effects: {
     *query({ payload }, { call, put }) {
       yield put({ type: 'loading' })
-      yield call(delay, 1000);
+      yield call(delay, 500);
       const { data } = yield call(query)
       if (data) {
         yield put({
@@ -46,9 +46,6 @@ export default {
     },
     querySucc(state, action) {
       return { ...state, posts: action.payload.posts, loading: false }
-    },
-    fetch(state, action) {
-      return { ...state, ...action.payload };
     }
   }
 }
