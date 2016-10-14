@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import Post from './Post'
 
 const PostList = (props) => {
@@ -16,6 +16,7 @@ const PostList = (props) => {
 };
 
 PostList.propTypes = {
+  posts: PropTypes.array.isRequired
 };
 
 export default PostList;

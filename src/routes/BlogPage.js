@@ -17,6 +17,7 @@ function BlogPage({ location, dispatch, blog }) {
 }
 
 BlogPage.propTypes = {
+  blog: PropTypes.object.isRequired
 };
 
 function mapStateToProps({ blog }) {
