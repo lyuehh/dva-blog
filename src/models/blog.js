@@ -1,6 +1,6 @@
-import { create, remove, update, query } from '../services/post';
+import { create, remove, update, query } from '../services/post'
 
-const delay = timeout => new Promise(resolve => setTimeout(resolve, timeout));
+const delay = (timeout) => new Promise(resolve => setTimeout(resolve, timeout))
 
 export default {
   namespace: 'blog',
@@ -29,9 +29,7 @@ export default {
       if (data) {
         yield put({
           type: 'querySucc',
-          payload: {
-            posts: data
-          }
+          payload: data
         })
       }
     }
@@ -44,8 +42,11 @@ export default {
     query(state) {
       return state
     },
+    addPost(state, action) {
+      return { ...state, posts: state.posts.concat(action.payload) }
+    },
     querySucc(state, action) {
-      return { ...state, posts: action.payload.posts, loading: false }
+      return { ...state, posts: action.payload, loading: false }
     }
   }
 }

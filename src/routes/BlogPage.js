@@ -3,8 +3,16 @@ import { connect } from 'dva';
 import { Link } from 'dva/router';
 import styles from './IndexPage.less';
 import PostList from '../components/PostList'
+import NewPost from '../components/NewPost'
 
 function BlogPage({ location, dispatch, blog }) {
+  function addPost(post) {
+    dispatch({
+      type: 'blog/addPost',
+      payload: post
+    })
+  }
+
   return (
     <div className={styles.normal}>
       <h1>Blog</h1>
@@ -12,6 +20,7 @@ function BlogPage({ location, dispatch, blog }) {
         blog.loading ? <p>loading...</p> : ''
       }
       <PostList posts={blog.posts} />
+      <NewPost addPost={addPost} />
     </div>
   );
 }
